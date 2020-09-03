@@ -1,0 +1,7 @@
+#+TITLE: JAVA-Learning
+#+DESCRIPTION: Contains the coding that I am going to create for the Object Oriented Programming in Java from Coursera.
+#+AUTHOR: AHMED AL BALOCHI
+
+* Additional Resources and Support <Taken from Coursera website>
+To Learn more visit:
+https://www.coursera.org/learn/object-oriented-java/supplement/J6m8F/additional-resources-and-support
