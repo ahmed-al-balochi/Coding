@@ -1,0 +1,11 @@
+#+TITLE: Coding
+#+DESCRIPTION: This repo contains my practice code whether it's for my own learning or my University Assignments or labs.
+#+AUTHOR: AHMED AL BALOCHI
+
+* Programming Languages in This Repo:
+** 1. CPP.
+Concepts Covered using this C++.
++ OOP.
++ Data Structures using STL.
+*** 2. JAVA.
++ OOP.
