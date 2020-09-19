@@ -5,12 +5,20 @@ public class User{
     private String Password;
     private String Email;
     private String Name;
-    // Addess d2; composition
+    Address d2; //composition
 
     public User(){
     Password = " ";
     Email = " ";
     Name = " ";
+    }
+
+    public void Address(String h, String s, String Co, String c){
+        d2 = new Address();
+        d2.SetLocation( h, s, Co, c);
+    }
+    public void GetAddress(){
+        d2.GetLocation();
     }
 
     public String NameGetter(){
@@ -127,22 +135,13 @@ public class User{
 			break;
 		}
 	}
+    public void RemoveLocation(){
+        d2.RemoveAddress(d2);
+	}
     public void RemoveAccount(User us){
 
 		Name = null;
         Password = null;
         Email = null;
 	}	// deletes the data
-
-    public static void main(String[] args) {
-        User a1=new User();
-        User a2=new User();
-        a1.RegisterAccount();
-        a1.Login();
-        a1.UpdateLoginInfo();
-        a2 = a1;
-        System.out.println("Name: "+ a1.NameGetter() +" Password" + a1.PassGetter()+ "Email" + a1.EmailGetter());
-        a1.RemoveAccount(a1);
-        System.out.println("Name: "+ a1.NameGetter() +" Password" + a1.PassGetter()+ "Email" + a1.EmailGetter());
-    }
 }
