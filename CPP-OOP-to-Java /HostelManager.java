@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HostelManager{
+public class HostelManager extends User{
 
     private int ManagerID;
 
