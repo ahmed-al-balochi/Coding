@@ -21,6 +21,11 @@ public class Hostel {
         hm1.ManagerIDSetter(hm);
     }
 
+	public void SetHostel(String N, String Num, Double P){
+	HostelName = N;
+	HostelPhoneNum = Num;
+	HostelPrice = P;
+	}
 	public void HostelRegister() { // Hostel manager adds name.phone num, price
 	String n, p;
 	double e;
