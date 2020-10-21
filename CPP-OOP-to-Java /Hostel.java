@@ -6,19 +6,15 @@ public class Hostel {
 	private String Detail;
 	private Double HostelPrice;
 
-	private HostelManager hm1; //compostion
+	private HostelManager hm; //compostion
 	private Address d2; //compostion
 
-	public Hostel(){
+	public Hostel(HostelManager hmObj ){
 	HostelName = "";
 	HostelPhoneNum = "";
 	Detail = "";
 	HostelPrice = 0.0;
-
-	}
-    public void SetHostelManager(int hm){
-        hm1 = new HostelManager();
-        hm1.ManagerIDSetter(hm);
+    hm = hmObj;
     }
 
 	public void SetHostel(String N, String Num, Double P){
@@ -48,7 +44,7 @@ public class Hostel {
         d2.SetLocation( h, s, Co, c);
     }
 
-	public void search_Hostel(){  // by price
+	public void SearchHostel(){  // by price
 		System.out.println( "Enter your starting range" );
 		double min;
 		Scanner in = new Scanner(System.in);
@@ -67,7 +63,7 @@ public class Hostel {
 	}
 
 
-	public void show_Hostel_info() { // name.phone num, price,address
+	public void ShowHostelInfo() { // name.phone num, price,address
 		System.out.println( "Hostel name " + HostelName );
 		System.out.println( "Hostel phone " + HostelPhoneNum );
 		System.out.println( "Hostel price " + HostelPrice );
@@ -77,7 +73,7 @@ public class Hostel {
 		return HostelPrice;
 	}
 
-	public void remove_Hostel() {
+	public void RemoveHostel() {
 		HostelName = null;
 		HostelPhoneNum = null;
 		HostelPrice = null;

@@ -7,25 +7,20 @@ public class Room {
 	private Hostel h; //compostion
 	private HostelManager hm; //compostion
 
-    public void add_room(int r) { //takes input from user
+    public Room(Hostel hObj,HostelManager hmObj){
+       h = hObj;
+       hm = hmObj;
+    }
+
+    public void SetRoom(int r) {
 		room_num = r;
 	}
 
-    public void SetHostelManager(int hm1){
-        hm = new HostelManager();
-        hm.ManagerIDSetter(hm1);
-    }
-
-    public void SetRoomHostel(String N, String Num, Double P){
-        h = new Hostel();
-        h.SetHostel(N,Num,P);
-    }
-
-	public void update_room(int r) {
+	public void UpdateRoom(int r) {
 		room_num = r;
 	}
 
-	public void create_room_info() {
+	public void CreateRoomInfo() {
 		String rom_info;
 		System.out.println( "Enter Room info " );
         Scanner in = new Scanner(System.in);
@@ -33,24 +28,19 @@ public class Room {
 		room_info = rom_info;
 	}
 
-	public int show_room() {
-		System.out.println( "Room number is " + room_num );
+    public int GetRoom() {
 		return room_num;
 	}
 
-    public int get_room() {
-		return room_num;
-	}
-
-	public void add_room_floor(int rn) { //takes input from user
+	public void SetRoomFloor(int rn) {
 		room_floor_num = rn;
 	}
 
-	public void update_room_floor(int rom_flor) {	//takes input from user
+	public void UpdateRoomFloor(int rom_flor) {
 		room_floor_num = rom_flor;
 	}
 
-	public void show_room_Info(){
+	public void DisplayRoomInfo(){
 		System.out.println( "Room floor is " + room_floor_num );
 		System.out.println( "Room Info " + room_info );
 	}

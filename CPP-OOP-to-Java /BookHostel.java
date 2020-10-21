@@ -3,12 +3,13 @@ import java.util.Scanner;
 public class BookHostel {
     private String booking_room;
 	private Double monthly_fees;
-	private Student st1;	//compostion
-	//private Room r1;	//compostion
+	private Student st;	//compostion
+	private Room r;	//compostion
 
-   /* void book_room(room _r1) {
-	r1 = _r1;
-}*/
+    public BookHostel(Room rObj, Student stObj){
+	   r = rObj;
+       st = stObj;
+}
 
 	public String showBookedHostel() {
 		System.out.println( "The booked room is " + booking_room );
@@ -32,9 +33,4 @@ public class BookHostel {
 		System.out.println("Monthly dues = " + monthly_fees );
 	}
 
-	public void SetStudent(String st)  //compostion
-	{
-        st1 = new Student();
-        st1.UniNameSetter(st);
-	}
 }

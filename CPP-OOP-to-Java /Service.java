@@ -9,39 +9,35 @@ public class Service{
 	private String[] mess_menu = new String[3];
 	private Room r; //aggregation
 
-public void create_service(String s,double p) {		//create service and its price
+	public Service( Room rObj){
+         r = rObj;
+    }
+
+	public void CreateService(String s,double p) {		//create service and its price
 		service = s;
 		service_price =p;
 	}
 
-	public void update_sevice() {
+	public void UpdateService() {
         Scanner in = new Scanner (System.in);
 		System.out.println( "Enter the new service that you want to update" );
 		service = in.nextLine();
 	}
 
-	public void remove_sevrice() {
+	public void RemoveService() {
 		 service = null;
 	}
 
-	double getServicePrice() {
+	double GetServicePrice() {
 		System.out.println( "The service price is " + service_price );
 		return service_price;
 	}
 
-	public String get_service() {
+	public String GetService() {
 		return service;
 	}
 
-	public void show_service() {
-		System.out.println( "the service in Room " + r.get_room() + " has " + service + " for " + service_price + "PKR");
-	}
-
-	public void SetRoom( Room r1){ //aggregation
-         r = r1;
-    }
-
-	public void create_mess_menu() {
+	public void CreateMessMenu() {
 		String breakfast, lunch, dinner;
         Scanner in = new Scanner (System.in);
 		System.out.println( "Enter breakfast " );
@@ -59,7 +55,7 @@ public void create_service(String s,double p) {		//create service and its price
 		mess_menu[2] = dinner;
 	}
 
-	public void update_mess_menu() {
+	public void UpdateMessMenu() {
         Scanner in = new Scanner (System.in);
 		String breakfast, lunch, dinner;
 		System.out.println( "Enter new breakfast " );
@@ -77,11 +73,11 @@ public void create_service(String s,double p) {		//create service and its price
 		mess_menu[2] = dinner;
 }
 
-	public void remove_mess_menu() {
+	public void RemoveMessMenu() {
 		 mess_menu[3] = null;
 	}
 
-	public void show_mess_menu(){
+	public void DisplayMessMenu(){
 		System.out.println( "The meals for the Day are " );
 		for (int i = 0; i < mess_menu.length ; i++) {
             String element = mess_menu[i];
