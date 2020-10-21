@@ -38,6 +38,10 @@ public class Room {
 		return room_num;
 	}
 
+    public int get_room() {
+		return room_num;
+	}
+
 	public void add_room_floor(int rn) { //takes input from user
 		room_floor_num = rn;
 	}

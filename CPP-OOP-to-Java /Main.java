@@ -4,16 +4,30 @@ public class Main{
 
     public static void main(String[] args) {
         Student a1=new Student();
+        a1.NameSetter("Ahmed");
         Student a2=new Student();
         HostelManager hm1 = new HostelManager ();
+        hm1.NameSetter("Ed");
         Hostel h1 = new Hostel ();
         BookHostel bh1 = new BookHostel ();
         Room R = new Room ();
         R.add_room(1);
+        R.add_room_floor(1);
         R.SetHostelManager(1);
         R.SetRoomHostel("pal", "1",290.0);
         R.create_room_info();
         R.show_room_Info();
+        Service S = new Service();
+        S.SetRoom(R);
+        S.create_service("WIFI", 500.50);
+        S.show_service();
+        S.create_mess_menu();
+        S.show_mess_menu();
+        Complain C = new Complain(R, S, hm1, a1);
+        C.write_complain();
+        C.show_complain();
+        C.create_complaint_reply();
+        C.show_complain_reply();
         /*bh1.updateBookedHostel();
         Double price = 50.0;
         bh1.ManageFees(price);

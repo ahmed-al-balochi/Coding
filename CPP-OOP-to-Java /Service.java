@@ -29,6 +29,10 @@ public void create_service(String s,double p) {		//create service and its price
 		return service_price;
 	}
 
+	public String get_service() {
+		return service;
+	}
+
 	public void show_service() {
 		System.out.println( "the service in Room " + r.get_room() + " has " + service + " for " + service_price + "PKR");
 	}
