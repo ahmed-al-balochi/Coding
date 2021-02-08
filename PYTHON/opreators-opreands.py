@@ -9,3 +9,5 @@ print(5/2)
 print(5//2) # removes the values after the point
 print(7 % 3)     # This is the remainder or modulus operator
 
+print(1+1 +(2*5))
+print(len("Linux"))
