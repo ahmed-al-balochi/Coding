@@ -1,30 +1,27 @@
-import java.io.*; 
-import java.util.Scanner;
-public class Fibonacci { 
-	public static int fibonacciRecursion(int n){
-	if(n == 0){
-		return 0;
-	}
-	if(n == 1 || n == 2){
-			return 1;
-		}
-	return fibonacciRecursion(n-2) + fibonacciRecursion(n-1);
-	}
-    public static void main(String args[]) {
-Scanner getFib = new Scanner(System.in);
-	int start,end;	
-	System.out.print("Enter Where you want the Fibonacci Series to Start: ");
-	start = getFib.nextInt();
-	System.out.print("Enter Where you want the Fibonacci Series to End: ");
-	end = getFib.nextInt();
-	System.out.println("## Fibonacci Series ##");
+import java.util.*;
 
-	System.out.print("Fibonacci Series of "+end+" numbers: ");
-	for(int i = 0; i < end; i++){
-		if(i>start && fibonacciRecursion(i) != end)
-			System.out.print(fibonacciRecursion(i) +" ");
-		else
-		continue;
-		}
+class Fibonacci
+{
+	public static void main(String args[])
+	{
+	        int i,c=0,start,end;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter a number to start the Fibonacci series: ");
+    	start=sc.nextInt();
+		System.out.print("\nEnter the end number to Fibonacci series: ");
+    	end=sc.nextInt();
+  		int a=0;
+   		int b=1;
+
+		System.out.println("Fibonacci series upto "+end+" is :-");
+   		while(c<=end)
+			{
+				if(c>=start){
+       			System.out.print(c+" ");
+				}
+       			a=b;
+       			b=c;
+       			c=a+b;
+   		}
 	}
 }
