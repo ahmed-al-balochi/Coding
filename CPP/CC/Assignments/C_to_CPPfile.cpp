@@ -1,0 +1,1 @@
+voidmain(){cout<<"Hello World";}
