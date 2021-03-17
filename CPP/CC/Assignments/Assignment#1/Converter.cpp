@@ -3,22 +3,6 @@
 #include<string>
 using namespace std;
 
-int func()
-{
-    char c;
-    while(cin >> c)
-    {
-        char x;
-        cin >> x;
-        while(x != '\n')
-        {
-            // print the characters
-            cin >> x;
-        }
-    }
-    return 0;
-}
-
 int main(){
     string arr[500];
     ifstream getCfile;
