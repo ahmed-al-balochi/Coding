@@ -26,7 +26,6 @@ int main(){
                tokenHolder = tokenHolder + str.at(i);
                //cout<<tokenHolder;
                if(tokenHolder =="void"){
-                   cout<<"in void"<<i;
                    fillTokens[inc]="void";
                    tokenHolder.clear();
                    inc++;
@@ -76,8 +75,6 @@ int main(){
                    tokenHolder.erase(0,found+1);
                }
               else{
-                  cout<<"in else";
-                  tokenHolder.clear();
                    continue;
               }
        }
@@ -85,7 +82,6 @@ int main(){
  }
     int len = sizeof(fillTokens)/sizeof(fillTokens[0]);
     for(int i = 0,j = 0;i<len;i++){
-    //cout<<"token no "<<i<<fillTokens[i]<<" ";
         if(fillTokens[i]==""){
             continue;
         }
@@ -99,13 +95,13 @@ int main(){
         cout<<finalTokens[i];
     }
 
-    C_to_CPPfile.open("C_to_CPPfile.cpp");
+    C_to_CPPfile.open("C_to_CPPfile.cpp");/*
     for(int i=0; i<lastStr; i++)
         if(finalTokens[i] =="")
             continue;
     else
     C_to_CPPfile<<finalTokens[i];
-
+*/
     getCfile.close();
     C_to_CPPfile.close();
 }
