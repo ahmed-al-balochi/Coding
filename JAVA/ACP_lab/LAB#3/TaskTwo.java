@@ -45,7 +45,7 @@ class MyException extends Exception{
    public String toString(){
        String str;
        if(bool1 )
-           str = "Fish Can't Walk!";
+           str = "Exception!! Fish Can't Walk!";
        else
            str = "Animal Can Walk!";
        return str;
