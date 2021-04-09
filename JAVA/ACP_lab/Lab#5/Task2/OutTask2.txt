@@ -1,0 +1,6 @@
+Text From File is: Ahmed Al Balochi @1998%
+Number of Capital Letter Characters  =  3
+Number of Small Letter Characters  =  11
+Number of Digit Characters     =  4
+Number of Special Characters   =  2
+Number of Space Characters   =  3
