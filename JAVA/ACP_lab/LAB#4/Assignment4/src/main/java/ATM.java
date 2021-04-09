@@ -8,7 +8,10 @@
  *
  * @author ahmed
  */
+import java.awt.event.ActionListener;
 import javax.swing.JTextField;
+import javax.swing.Timer;
+
 class Customer extends javax.swing.JFrame{
     private double  Balance;    
 
@@ -29,12 +32,16 @@ class Deposit extends Customer{
 
     public void setCheckDeposit(double CheckDeposit) {
         this.CheckDeposit = CheckDeposit;
-        setBalance(CheckDeposit);
+        double Bal = getBalance();
+        Bal = Bal + CheckDeposit;
+        setBalance(Bal);
     }
 
     public void setCashDeposit(double CashDeposit) {
         this.CashDeposit = CashDeposit;
-        setBalance(CashDeposit);
+        double Bal = getBalance();
+        Bal = Bal + CashDeposit;
+        setBalance(Bal);
     }
 
     public double getCheckDeposit() {
@@ -46,14 +53,36 @@ class Deposit extends Customer{
     }
     
 }
-class Withdraw extends Customer{
+class Withdraw extends Deposit{
     private String str;
     private double Withdraw,Bal;
-    Withdraw(double WithdrawAmount){
+
+    public void setWithdraw(double Withdraw) {
+        this.Withdraw = Withdraw;
+    }
+
+    public void setBal(double Bal) {
+        this.Bal = Bal;
+    }
+
+    public double getWithdraw() {
+        return Withdraw;
+    }
+
+    public double getBal() {
+        return Bal;
+    }
+    Withdraw(){
+        str = "";
+        Withdraw = 0.0;
+        Bal = 0.0;
+    }
+    void ATMWithdraw(double Withdraw){
+        this.Withdraw = Withdraw;
+        Bal = getBalance();
         if (isMultipleof500(Withdraw) == false)
             str= "Wrong Input. Please Try Again";
         else{
-            Bal = getBalance();
             if(Bal == 0){
             str = "Your Account is zero.. Please Deposit";
             }
@@ -63,7 +92,7 @@ class Withdraw extends Customer{
             else if(Bal > Withdraw){
             Bal = Bal - Withdraw;
             setBalance(Bal);
-            str = "WithDraw Success\n Thank You for using Our ATM";
+            str = "WithDraw Success Amount Withdrawn is: "+Withdraw;
             }
         }
     }
@@ -85,16 +114,15 @@ class Withdraw extends Customer{
         }
 }
 
-public class ATM extends Customer {
+public class ATM extends Withdraw{
 
     private String str;
-    
     
     /**
      * Creates new form ATM
      */
     public ATM() {
-        this.setVisible(true);
+        //this.setVisible(true);
         initComponents();
     }
 
@@ -122,6 +150,7 @@ public class ATM extends Customer {
         jLabel3 = new javax.swing.JLabel();
         WithdrawStatus = new javax.swing.JLabel();
         DepositStatus = new javax.swing.JLabel();
+        Message = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,6 +167,14 @@ public class ATM extends Customer {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -194,14 +231,12 @@ public class ATM extends Customer {
 
         DepositStatus.setText("Status");
 
+        Message.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,11 +266,20 @@ public class ATM extends Customer {
                         .addComponent(dep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(WithdrawStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(DepositStatus)
-                .addGap(126, 126, 126))
+                .addGap(160, 160, 160)
+                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(WithdrawStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DepositStatus)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +314,9 @@ public class ATM extends Customer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(WithdrawStatus)
                     .addComponent(DepositStatus))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,8 +324,9 @@ public class ATM extends Customer {
 
     private void SubmitDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitDepositActionPerformed
         CashDepositActionPerformed(evt);
-        String text = "d";
-        DepositStatus.setText(text);
+        CheckDepositActionPerformed(evt);
+        //String text = "d";
+        //DepositStatus.setText(text);
     }//GEN-LAST:event_SubmitDepositActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
@@ -289,23 +336,24 @@ public class ATM extends Customer {
     private void WithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WithdrawActionPerformed
     String text = Withdraw.getText();
     double d=Double.parseDouble(text);
-    Withdraw with= new Withdraw(d);
-    str = with.getStr();
+    ATMWithdraw(d);
+    str = getStr();
      }//GEN-LAST:event_WithdrawActionPerformed
 
     private void CashDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CashDepositActionPerformed
     String text = CashDeposit.getText();
-    Deposit Dep= new Deposit();
     double d=Double.parseDouble(text);  
-    Dep.setCashDeposit(d);
+    setCashDeposit(d);
+    text = "Deposit Success The Amount is: "+d;
+    DepositStatus.setText(text);
     }//GEN-LAST:event_CashDepositActionPerformed
 
     private void CheckDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckDepositActionPerformed
     String text = CheckDeposit.getText();
-    Deposit Dep= new Deposit();
     double d=Double.parseDouble(text);  
-    Dep.setCheckDeposit(d);
-    //str = Dep.getStr();
+    setCheckDeposit(d);
+    text = "Deposit Success The Amount is: "+d;
+    DepositStatus.setText(text);
     }//GEN-LAST:event_CheckDepositActionPerformed
 
     private void SubmitWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitWithdrawActionPerformed
@@ -313,6 +361,19 @@ public class ATM extends Customer {
         String text = str;
         WithdrawStatus.setText(text);
     }//GEN-LAST:event_SubmitWithdrawActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    String text = "Thank You for using Our ATM";
+    Message.setText(text);   
+    int delay = 2000;
+Timer timer = new Timer(2, (ActionListener) this);
+timer.setRepeats( false );
+timer.start();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -353,6 +414,7 @@ public class ATM extends Customer {
     private javax.swing.JTextField CashDeposit;
     private javax.swing.JTextField CheckDeposit;
     private javax.swing.JLabel DepositStatus;
+    private javax.swing.JLabel Message;
     private javax.swing.JButton SubmitDeposit;
     private javax.swing.JButton SubmitWithdraw;
     private javax.swing.JTextField Withdraw;
