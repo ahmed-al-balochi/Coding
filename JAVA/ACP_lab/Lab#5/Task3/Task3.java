@@ -7,7 +7,7 @@ public class Task3{
         String userName =" ", aLine=" ";
         int userGames=0, played =0,fine = 0;
     //process
-    System.out.println("to Play Enter 1\nto Checkout Enter 2 ");
+    System.out.println("to Play Enter 1\nto Exit Enter 2 ");
     int sw= scan.nextInt();
     switch(sw){
     case 1:
@@ -28,16 +28,17 @@ public class Task3{
             Scanner scan3 = new Scanner(in);
             String file = scan3.nextLine();
             int asci=0;
+            System.out.println("Customer:  Games Played:\n\t"+file);
 		for(int i = 0; i < file.length(); i++)
 		{
 			asci = file.codePointAt(i);
 			if(asci >= 48 && asci <= 57 ) {
-//figer out how to know if this is number
-				userGames = asci;
-    System.out.println(userGames );
-			}
+    int numericValue = Character.getNumericValue(asci);
+    userGames = numericValue;
+    //System.out.println(userGames);
+            }
         }
-    System.out.println("To check out Enter the number of games played: ");
+    System.out.println("To Exit Enter the number of games played: ");
     played = scan.nextInt();
     if(played>userGames){
     fine = played-userGames;
