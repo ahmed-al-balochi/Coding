@@ -30,9 +30,27 @@ bool Alpha(char tokenHolder){
         }
         return alpha;
 }
+
+
+
+bool Sp(char tokenHolder){
+    bool sp = false;
+    if(tokenHolder== '(' || tokenHolder== ')' || tokenHolder== '$'|| tokenHolder== '<'|| tokenHolder== '>'
+       || tokenHolder== '['|| tokenHolder== ']'|| tokenHolder== '{'|| tokenHolder== '}'|| tokenHolder== '#'
+       || tokenHolder== '&'|| tokenHolder== '|'|| tokenHolder== '+'|| tokenHolder== '-'|| tokenHolder== '='
+       || tokenHolder== '%'|| tokenHolder== '^'|| tokenHolder== '*'|| tokenHolder== '?'|| tokenHolder== ':'){
+            sp= true;
+            }
+        else {
+            sp= false;
+        }
+
+    return sp;
+}
+
 bool Q(char tokenHolder){
     bool q=false;
-        if(tokenHolder<= '\''){
+        if(tokenHolder<= '\"' ||tokenHolder<= '\''){
             q= true;
             }
         else {
@@ -46,7 +64,23 @@ void Lex(char in[],int num){
     string Token[num];
     int prev=0,next=prev+1,inc = 0;
     for(int i = 0; i <num; prev++,next++,i++) {
-        if(isspace(in[next])){
+        if(Sp(in[prev])==true){
+           inc++;
+           Token[inc] += in[prev];
+           if (in[prev]=='<' || in[next]=='<'||in[prev]=='>' || in[next]=='>') {
+           Token[inc] += in[next];
+            prev = next;
+            next = prev + 1;
+           }
+           inc++;
+        }
+        else if (in[prev] ==';'&& isspace(in[next])) {
+           inc++;
+           Token[inc] = in[prev];
+           inc++;
+           //cout<<"\nin ;\n";
+        }
+        else if(isspace(in[next])){
            Token[inc] += in[prev];
             prev = next;
             next = prev + 1;
@@ -61,15 +95,15 @@ void Lex(char in[],int num){
         else if (in[prev] =='=') {
            Token[inc] = in[prev];
         }
-        if (in[prev] ==';') {
-           inc++;
-           Token[inc] = in[prev];
-           cout<<"\nin ;\n";
-        }
     }
-    cout<<"Number Of Tokens = "<<num<<endl;
-    for(int i = 0; i <num; i++){
-        cout<<Token[i]<<"/";
+    cout<<"Tokens: "<<inc<<endl;
+    string FinalTokens[num];
+    for(int i = 0; i <inc ; i++){
+        if(Token[i]!=""){
+            FinalTokens[i] = Token[i];
+            //cout<<Token[i]<<"/";
+            cout<<FinalTokens[i]<<"\tNum of Token "<<i<<endl;
+        }
     }
     //cout<<"\nConverted To AAA Language: "<<inc<<endl;
     //for(int i = 0;i<num;i++){

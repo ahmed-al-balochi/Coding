@@ -14,7 +14,6 @@ int main(){
     string fillTokens[100],finalTokens[20];
     ifstream getCfile;
     ofstream C_to_CPPfile;
-
     getCfile.open ("Cfile.c", std::fstream::in | std::fstream::out | std::fstream::app);
 
     if(getCfile.is_open()){

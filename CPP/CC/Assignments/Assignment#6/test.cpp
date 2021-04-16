@@ -1,28 +1,35 @@
-#include <iostream>
+#include<iostream>
+#include<string>
 #include<fstream>
-#include <vector>
-#include <sstream>
+#include<sstream>
+#include<cstring>
 using namespace std;
 
-int main() {
-   ifstream getCfile;
-   getCfile.open ("CPPFile.cpp", std::fstream::in | std::fstream::out | std::fstream::app);
-   string in,out;
-if(getCfile.is_open()){
-        for(int i=0; i<37; i++){
-            getCfile>>in;
-            out = out +in;
-            //cout<<in;
-    }
-}
-   stringstream ss(out); //convert my_string into string stream
-   vector<string> tokens;
-   string temp_str;
+int main()
+{
 
-   while(getline(ss, temp_str, ' ')){ //use comma as delim for cutting string
-      tokens.push_back(temp_str);
-   }
-   for(int i = 0; i < tokens.size(); i++) {
-      cout << tokens[i] << i << " " << endl;
-   }
+char ch;
+
+ifstream file;
+file.open("CPPFile.cpp");
+file>>ch;
+char tokens[80];
+char *ptr;
+while(!file.eof())
+{
+
+int i=0;
+
+
+tokens[i]=ch;
+ptr=strtok(tokens," \n");
+cout<<ptr<<"\t";
+i++;
+
+file>>ch;
+
+}
+
+
+
 }
