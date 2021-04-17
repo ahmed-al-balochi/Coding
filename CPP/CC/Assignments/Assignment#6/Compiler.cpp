@@ -5,6 +5,7 @@
 #include <iostream>
 #include<fstream>
 #include<string>
+#include <cstring>
 #include <bits/stdc++.h>
 #include <ctype.h>
 using namespace std;
@@ -48,6 +49,7 @@ bool Sp(char tokenHolder){
     return sp;
 }
 
+
 bool Q(char tokenHolder){
     bool q=false;
         if(tokenHolder<= '\"' ||tokenHolder<= '\''){
@@ -59,8 +61,22 @@ bool Q(char tokenHolder){
         return q;
 }
 
+void dispQueue(queue <string> st){
+    //declare temp. statck
+    queue <string> s = st;
+    ofstream Tokens_of_MyLang;
+    Tokens_of_MyLang.open("Tokens_of_MyLang.txt");  //Output File
+    int i=0;
+    for(i=0;!s.empty();i++){
+        cout<<s.front()<<"\tToken Number "<<1+i<<" "<<endl;
+        Tokens_of_MyLang<<s.front()<<"\n";
+        s.pop();
+    }
+    cout<<endl<<"Total Tokens: "<<i<<endl;
+    Tokens_of_MyLang.close();
+}
 
-void Lex(char in[],int num){
+queue <string> Lex(char in[],int num){
     string Token[num];
     int prev=0,next=prev+1,inc = 0;
     for(int i = 0; i <num; prev++,next++,i++) {
@@ -95,43 +111,41 @@ void Lex(char in[],int num){
         else if (in[prev] =='=') {
            Token[inc] = in[prev];
         }
+        /*else if(in[prev]=='-'&&in[next]=='-' || in[prev]=='-' && in[next]=='#'){ Couldn't get the quote & comment logic capture right
+           Token[inc] += in[prev];
+        }
+        else if(Q(in[prev])==true){
+           Token[inc] += in[prev];
+        }                                                        My Lexical Analyizer is tokenizing everything except quote and comments */
     }
-    cout<<"Tokens: "<<inc<<endl;
-    string FinalTokens[num];
+    queue <string> FinalTokens;
     for(int i = 0; i <inc ; i++){
         if(Token[i]!=""){
-            FinalTokens[i] = Token[i];
-            //cout<<Token[i]<<"/";
-            cout<<FinalTokens[i]<<"\tNum of Token "<<i<<endl;
+            FinalTokens.push(Token[i]);
         }
     }
-    //cout<<"\nConverted To AAA Language: "<<inc<<endl;
-    //for(int i = 0;i<num;i++){
-     //   cout<<Token[i];
-    //}
+    dispQueue(FinalTokens);
+    return FinalTokens;
 }
 
 int main(){
     int numToken=0;
     string in;
     char tk[500];
-    ifstream getCfile;
-    ofstream C_to_CPPfile;
-    getCfile.open ("CPPFile.cpp", std::fstream::in | std::fstream::out | std::fstream::app);
-    C_to_CPPfile.open("CPP_to_MyLang.AAA");
-    if(getCfile.is_open()){
-        while (getline(getCfile, in, '\0')){
+    ifstream getMyLang;
+    getMyLang.open ("MyLang.AAA", std::fstream::in | std::fstream::out | std::fstream::app);
+    if(getMyLang.is_open()){
+        while (getline(getMyLang, in, '\0')){
             for(char ch: in){
                 tk[numToken] = ch;
                 cout<<tk[numToken];
                 numToken++;
             }
         }
-    Lex(tk,numToken);
-        }
+   Lex(tk,numToken);
+   }
     else{
         cout<<"File is not Open"<<endl;
     }
-    getCfile.close();
-    C_to_CPPfile.close();
+    getMyLang.close();
 }
