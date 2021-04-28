@@ -1,0 +1,5 @@
+#!/bin/sh
+a=5
+b=7
+c=5.5
+echo "scale=4;$a * $b / $c "| bc

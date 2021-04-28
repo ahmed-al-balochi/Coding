@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "Enter a String to name the Folder:\n "
+read a
+mkdir $a
+cd $a
+date > Timestamp.txt
+echo "Folder and Time Stamp file are created"

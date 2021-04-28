@@ -1,0 +1,6 @@
+#!/bin/sh
+echo "Enter 2 Numbers to sum\n"
+read a
+read b
+echo $a "+" $b "="
+expr $a + $b
