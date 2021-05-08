@@ -1,0 +1,10 @@
+Seller Name: Ahmed Al Balochi	SellerID: 2028
+
+Fruit Name: Apple	FruitID: 1	Fruit Price: 2.9	Fruit Qty: 12
+Fruit Name: Blackberry	FruitID: 2	Fruit Price: 5.0	Fruit Qty: 24
+Fruit Name: Banana	FruitID: 3	Fruit Price: 6.4	Fruit Qty: 30
+Fruit Name: Strawberry	FruitID: 4	Fruit Price: 6.9	Fruit Qty: 45
+Fruit Name: Grapes	FruitID: 5	Fruit Price: 7.0	Fruit Qty: 28
+Fruit Name: Mango	FruitID: 6	Fruit Price: 9.0	Fruit Qty: 14
+Fruit Name: Peach	FruitID: 7	Fruit Price: 14.0	Fruit Qty: 18
+
