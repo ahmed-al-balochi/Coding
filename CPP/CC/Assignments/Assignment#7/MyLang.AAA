@@ -1,0 +1,10 @@
+Int hidden -> 3:
+Int guess:
+Pr("Hello World"):
+Uin(guess):
+If (guess < hidden)
+Pr():
+Else Then (guess > hidden)
+Pr():
+Else
+Pr():
