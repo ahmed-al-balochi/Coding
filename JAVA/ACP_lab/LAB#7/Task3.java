@@ -48,11 +48,6 @@ class myThreads implements Runnable{
     public void run(){}
 }
 
-
-class Test extends Thread
-{
-}
-
 public class Task3 {
   public static void main(String args[]){
       Queue q = new Queue();
