@@ -1,0 +1,15 @@
+M Filemode      Length  Date         Time      File
+- ----------  --------  -----------  --------  ------------------------------------------------
+  drwxr-xr-x         0  11-May-2021  18:29:20  META-INF/
+  -rw-r--r--       128  11-May-2021  18:29:18  META-INF/MANIFEST.MF
+  drwxr-xr-x         0  11-May-2021  18:29:04  ge/
+  drwxr-xr-x         0  11-May-2021  18:29:04  ge/ahmed/
+  -rw-r--r--       640  11-May-2021  18:29:02  log4j2.xml
+  -rw-r--r--      3645  11-May-2021  18:29:04  ge/ahmed/KeyLogger.class
+  crwsrwsrwx         0  11-May-2021  18:29:20  META-INF/maven/
+  crwsrwsrwx         0  11-May-2021  18:29:20  META-INF/maven/ge.ahmed/
+  crwsrwsrwx         0  11-May-2021  18:29:20  META-INF/maven/ge.ahmed/keylogger/
+  -rw-r--r--      2296  11-May-2021  18:25:16  META-INF/maven/ge.ahmed/keylogger/pom.xml
+  -rw-r--r--       109  11-May-2021  18:29:20  META-INF/maven/ge.ahmed/keylogger/pom.properties
+- ----------  --------  -----------  --------  ------------------------------------------------
+                  6818                         11 files
