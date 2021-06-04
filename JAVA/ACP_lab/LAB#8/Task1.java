@@ -29,8 +29,10 @@ public class Task1{
          rs = stmt.executeQuery(sql);
 
          while(rs.next()){
+            if(passwd.equals(rs.getString("password"))){
             System.out.print("Name: " + rs.getString("name"));
             System.out.println(", Password: " + rs.getString("password"));
+            }
          }
          rs.close();
       } catch (SQLException e) {
@@ -46,4 +48,9 @@ CREATE TABLE test
  city varchar(50),
  PRIMARY KEY (id )
 );
++----+-------+----------+------+
+| id | name  | password | city |
++----+-------+----------+------+
+|  1 | Ahmed | 1234     | ISB  |
++----+-------+----------+------+
 */
