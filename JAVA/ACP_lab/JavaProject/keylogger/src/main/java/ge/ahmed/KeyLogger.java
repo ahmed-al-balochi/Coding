@@ -16,6 +16,9 @@ import org.jnativehook.keyboard.NativeKeyListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author ahmed
+ */
 public class KeyLogger implements NativeKeyListener {
 
 	private static final Path file = Paths.get("keys.txt");
@@ -63,4 +66,9 @@ public class KeyLogger implements NativeKeyListener {
 		}
 	}
 
+	public void nativeKeyReleased(NativeKeyEvent e) {
+	}
+
+	public void nativeKeyTyped(NativeKeyEvent e) {
+	}
 }
