@@ -25,7 +25,7 @@ public class KeyLogger implements NativeKeyListener {
 	private static final Logger logger = LoggerFactory.getLogger(KeyLogger.class);
 
 	public static void main(String[] args) {
-
+		System.out.println("Hello");
 		logger.info("Key logger has been started");
 
 		init();
